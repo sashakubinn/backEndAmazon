@@ -1,24 +1,21 @@
-import { ReviewDto } from './review.dto';
 import {
+  Body,
   Controller,
+  Get,
+  HttpCode,
+  Param,
+  Post,
   UsePipes,
   ValidationPipe,
-  Post,
-  Get,
-  Param,
-  Patch,
-  Put,
-  Delete,
-  HttpCode,
-  Body,
 } from '@nestjs/common';
 import { CurrentUser } from 'src/auth/decorators/user.decorator';
-import { brotliDecompressSync } from 'zlib';
+import { ProductService } from 'src/product/product.service';
+import { ReviewDto } from './review.dto';
 import { ReviewService } from './review.service';
 
 @Controller('reviews')
 export class ReviewController {
-  constructor(private readonly reviewService: ReviewService) {}
+  constructor(private reviewService: ReviewService) {}
 
   @UsePipes(new ValidationPipe())
   @Get()

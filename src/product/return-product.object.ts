@@ -14,6 +14,9 @@ export const productReturnObject: Prisma.ProductSelect = {
   },
   reviews: {
     select: returnReviewObject,
+    orderBy: {
+      createdAt: 'desc',
+    },
   },
 };
 
